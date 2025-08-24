@@ -1,9 +1,9 @@
-# Ignore everything except the client app and build script
+# Ignore server and packages, but keep client app files
 apps/server/
 packages/
 node_modules/
 .turbo/
-.next/
 dist/
 *.log
 .env*
+.git/

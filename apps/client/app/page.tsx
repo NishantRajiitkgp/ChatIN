@@ -36,7 +36,34 @@ interface ClientToServerEvents {
 }
 
 const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'https://real-time-chat-tmzf.onrender.com';
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(SOCKET_URL);
+
+// Create socket with better error handling and reconnection logic
+const createSocket = () => {
+  const socket = io(SOCKET_URL, {
+    transports: ['websocket', 'polling'],
+    timeout: 20000,
+    reconnection: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000,
+  });
+  
+  socket.on('connect_error', (error) => {
+    console.error('Socket connection error:', error);
+    toast.error('Connection failed. Please check your internet connection.');
+  });
+  
+  socket.on('disconnect', (reason) => {
+    console.log('Socket disconnected:', reason);
+    if (reason === 'io server disconnect') {
+      // Server disconnected, try to reconnect
+      socket.connect();
+    }
+  });
+  
+  return socket;
+};
+
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = createSocket();
 
 const MessageGroup = ({ messages, userId }: { messages: Message[], userId: string }) => {
   return (
