@@ -2,10 +2,5 @@
   "buildCommand": "npm run vercel-build",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "outputDirectory": ".next",
-  "functions": {
-    "apps/client/app/**/*.tsx": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "outputDirectory": "apps/client/.next"
 }
