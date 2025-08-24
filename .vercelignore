@@ -1,0 +1,7 @@
+# Exclude server app from Vercel build
+apps/server/
+packages/
+.turbo/
+node_modules/
+*.log
+.env*
