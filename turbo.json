@@ -5,7 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "build/**", "*.js"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "build/**", "*.js", "public/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -21,7 +21,7 @@
   "pipeline": {
     "web#build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**", "public/**"]
     },
     "server#build": {
       "dependsOn": ["^build"],

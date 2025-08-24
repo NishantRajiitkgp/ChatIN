@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "npm install && cd apps/client && npm install && npm run build && cd ../.. && xcopy apps\\client\\.next .next /E /I /Y",
-    "vercel-build": "npm install && cd apps/client && npm install && npm run build",
+    "vercel-build": "node build-vercel.js",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
