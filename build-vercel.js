@@ -9,9 +9,9 @@ try {
   console.log('Installing dependencies with npm workspaces...');
   execSync('npm install', { stdio: 'inherit' });
   
-  // Build all packages using turbo
-  console.log('Building all packages with turbo...');
-  execSync('npm run build', { stdio: 'inherit' });
+  // Build the client app directly (skip server to avoid turbo warnings)
+  console.log('Building client app...');
+  execSync('npm run build', { cwd: 'apps/client', stdio: 'inherit' });
   
   // Verify the client build output exists
   const nextDir = path.join('apps/client', '.next');
@@ -35,18 +35,6 @@ try {
     console.log('📁 Public directory contents:', publicContents);
   } else {
     throw new Error('Public directory not found');
-  }
-  
-  // Verify server build output exists
-  const serverDistDir = path.join('apps/server', 'dist');
-  if (fs.existsSync(serverDistDir)) {
-    console.log('✅ Server build output found at:', serverDistDir);
-    
-    // List contents of dist directory
-    const distContents = fs.readdirSync(serverDistDir);
-    console.log('📁 Server dist directory contents:', distContents);
-  } else {
-    console.log('⚠️ Server build output not found (this is okay for client-only deployment)');
   }
   
   console.log('Vercel build completed successfully!');

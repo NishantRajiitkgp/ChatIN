@@ -16,16 +16,14 @@
     "dev": {
       "cache": false,
       "persistent": true
-    }
-  },
-  "pipeline": {
+    },
     "client#build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "public/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "server#build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "*.js"]
+      "outputs": ["dist/**"]
     }
   }
 }
