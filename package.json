@@ -7,9 +7,9 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cd apps/client && next dev --turbopack",
+    "build": "cd apps/client && next build",
+    "start": "cd apps/client && next start",
     "lint": "next lint",
     "check-types": "tsc --noEmit",
     "vercel-build": "node build-vercel.js"
