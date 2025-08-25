@@ -8,15 +8,18 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./apps/client/*"],
+      "@repo/*": ["./packages/*"]
     }
   },
   "include": [
-    "next-env.d.ts",
-    "next.config.mjs",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
+    "apps/client/next-env.d.ts",
+    "apps/client/next.config.mjs",
+    "apps/**/*.ts",
+    "apps/**/*.tsx",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "apps/client/.next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

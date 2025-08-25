@@ -19,7 +19,7 @@
     }
   },
   "pipeline": {
-    "web#build": {
+    "client#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "public/**"]
     },

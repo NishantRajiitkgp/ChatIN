@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "chat-in",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "cd apps/client && next dev --turbopack",
-    "build": "cd apps/client && next build",
+    "build": "turbo build",
     "start": "cd apps/client && next start",
     "lint": "next lint",
     "check-types": "tsc --noEmit",
